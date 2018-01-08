@@ -4,32 +4,53 @@
 <head>
     <meta charset="utf-8">
     <title>Chatアプリ</title>
+    <link rel="stylesheet" href="css/chat.css">
+
 </head>
 
 <body>
 
+    <!-- 読み込み画面 -->
     <div id="loading_start" style="height:100%;backgroud-color:#e3f4fd;text-align:center">
         <img src="img/gia.gif" alt="">
     </div>
 
     <!-- コンテンツ表示画面 -->
     <div id="loading_end" style="display:none">
-        <button id="logout">ログアウト</button>
-        <div id="user_view"></div>
-        <div>名前
-            <input type="text" name="" id="username">
+	    <div class="main">
+	        <div id="user_view"></div>
+	        <div>名前
+	            <input type="text" name="" id="username" readonly="readonly">
+	        </div>
+	        <div>
+	            <textarea name="" id="text" rows="6" cols="29"></textarea><br>
+	            <button id="send">送信</button>
+                <button id="reset">リセット</button>
+	        </div>
+	        <!-- リスト表示 -->
+	        <div id="output"></div>
+	    </div>
+	    <div class="status">
+	       <div class="side_margin">
+	            <div>ログイン情報</div>
+	            <dl>
+	            <dt>email:</dt>
+                <dd id="view_email"></dd>
+                <dt>name:</dt>
+	            <dd id="view_name"></dd>
+	            </dl>
+	            <button id="logout">ログアウト</button>
+	            <div>参加中</div>
+	            <ul id="join_user"></ul>
+            </div>
         </div>
-        <div>
-            <textarea name="" id="text" rows="6"></textarea>
-            <button id="send">送信</button>
-        </div>
-        <!-- リスト表示 -->
-        <div id="output"></div>
     </div>
 
 
-    <!--/ コンテンツ表示画面 -->
-
+    <!-- ログアウト表示画面 -->
+    <div id="after_logout">
+        <button id="login">ログイン</button>
+    </div>
 
 
     <!-- 以下JavaScript領域 -->

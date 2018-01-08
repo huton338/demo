@@ -1,0 +1,25 @@
+body {width:100%}
+
+#loading_end {
+  display: flex;
+  justify-content: center;
+  }
+
+.main{
+	
+}
+
+.status{
+    position:fixed;
+    right:0;
+    width:25%;
+    height:100%;
+    border-left:solid  3px #009999;
+}
+
+.side_margin{
+    margin-left:10px;
+}
+
+#logout{margin-bottom:30px;}
+#login {display:none;}
