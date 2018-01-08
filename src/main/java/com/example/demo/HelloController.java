@@ -15,8 +15,8 @@ public class HelloController {
         return "hello";
     }
 
-    @RequestMapping(value="/index")
+    @RequestMapping(value="/chat")
     private String index(Model model,Locale locale){
-        return "index";
+        return "chat";
     }
 }

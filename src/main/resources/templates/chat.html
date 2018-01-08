@@ -2,19 +2,26 @@
 <html lang="ja">
 
 <head>
-    <meta charset="utf-8" />
-    <title th:text="Chatアプリ"></title>
+    <meta charset="utf-8">
+    <title>Chatアプリ</title>
 </head>
 
 <body>
+
+    <div id="loading_start" style="height:100%;backgroud-color:#e3f4fd;text-align:center">
+        <img src="img/gia.gif" alt="">
+    </div>
+
     <!-- コンテンツ表示画面 -->
-    <div>
-        <div th:text="名前">
-            <input type="text" name="ftext" id="username" th:field="*{ftext}"/>
+    <div id="loading_end" style="display:none">
+        <button id="logout">ログアウト</button>
+        <div id="user_view"></div>
+        <div>名前
+            <input type="text" name="" id="username">
         </div>
         <div>
-            <textarea name="farea" id="text" rows="6" th:field="*{farea}"></textarea>
-            <button id="send" th:text="送信"></button>
+            <textarea name="" id="text" rows="6"></textarea>
+            <button id="send">送信</button>
         </div>
         <!-- リスト表示 -->
         <div id="output"></div>
