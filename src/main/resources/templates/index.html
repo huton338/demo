@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <title th:text="Chatアプリ"></title>
+</head>
+
+<body>
+    <!-- コンテンツ表示画面 -->
+    <div>
+        <div th:text="名前">
+            <input type="text" name="ftext" id="username" th:field="*{ftext}"/>
+        </div>
+        <div>
+            <textarea name="farea" id="text" rows="6" th:field="*{farea}"></textarea>
+            <button id="send" th:text="送信"></button>
+        </div>
+        <!-- リスト表示 -->
+        <div id="output"></div>
+    </div>
+
+
+    <!--/ コンテンツ表示画面 -->
+
+
+
+    <!-- 以下JavaScript領域 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- 以下Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+
+</html>
