@@ -1,4 +1,4 @@
-body {width:100%}
+body {width:100%;}
 
 #loading_end {
   display: flex;
@@ -6,7 +6,7 @@ body {width:100%}
   }
 
 .main{
-	
+
 }
 
 .status{
@@ -23,3 +23,15 @@ body {width:100%}
 
 #logout{margin-bottom:30px;}
 #login {display:none;}
+
+
+button{
+  text-decoration: none;
+  height:30px;
+  width: 100px;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  background: #2bb6c1;
+  transition: 0.3s;
+}

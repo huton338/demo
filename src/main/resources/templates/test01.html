@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Geolocation練習！！！</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+           * element that contains the map. */
+
+        #map {
+            height: 50%;
+        }
+
+        #pano {
+            height: 50%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="pano"></div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+    <script>
+        //成功関数
+        function init(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            // $("body").append(lat + "," + lon);
+
+            var map;
+            var myLatLng = {
+                lat: lat,
+                lng: lon
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: myLatLng
+            });
+            var panorama = new google.maps.StreetViewPanorama(
+                document.getElementById('pano'), {
+                    position: myLatLng,
+                    pov: {
+                        heading: 34,
+                        pitch: 10
+                    }
+                });
+            map.setStreetView(panorama);
+
+            var contentString = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
+                '<div id="bodyContent">' +
+                '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
+                'sandstone rock formation in the southern part of the ' +
+                'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) ' +
+                'south west of the nearest large town, Alice Springs; 450&#160;km ' +
+                '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major ' +
+                'features of the Uluru - Kata Tjuta National Park. Uluru is ' +
+                'sacred to the Pitjantjatjara and Yankunytjatjara, the ' +
+                'Aboriginal people of the area. It has many springs, waterholes, ' +
+                'rock caves and ancient paintings. Uluru is listed as a World ' +
+                'Heritage Site.</p>' +
+                '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+                'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
+                '(last visited June 22, 2009).</p>' +
+                '</div>' +
+                '</div>';
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var img = "m.png";
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Hello World!',
+                // icon: img
+            });
+            // marker.addListener('click', function () {
+            infowindow.open(map, marker);
+            // });
+
+
+        }
+
+        //エラー関数
+        function err(error) {
+            const e = error.code;
+            if (e == 1) {
+                alert("取得許可が得られませんでした。");
+            }
+            if (e == 2) {
+                alert("座標取得ができませんでした。");
+            }
+            if (e == 3) {
+                alert("TimeOut");
+            }
+
+        }
+
+        //オプション設定
+        const option = {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 10000
+        };
+
+        function initMap() {
+            navigator.geolocation.getCurrentPosition(init, err, option);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGo_cXRu_GJoTWN3REOXcP6DpDgFS9dzM&callback=initMap" async
+        defer></script>
+
+</body>
+
+</html>
