@@ -1,4 +1,4 @@
-package com.example.demo;
+package controller;
 
 import java.util.List;
 
@@ -11,6 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.demo.MessageForm;
+
+import data.entity.Message;
+import service.MessageService;
 
 @Controller
 public class MessageController {

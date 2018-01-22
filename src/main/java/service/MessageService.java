@@ -1,4 +1,4 @@
-package com.example.demo;
+package service;
 
 import java.util.List;
 
@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import data.entity.Message;
+import data.repository.MessageRepository;
 
 @Service
 public class MessageService {

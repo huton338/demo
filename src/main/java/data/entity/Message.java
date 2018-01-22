@@ -1,4 +1,4 @@
-package com.example.demo;
+package data.entity;
 
 import java.util.Date;
 
@@ -24,11 +24,11 @@ public class Message {
     @Column(nullable = false)
     private String text;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name="remoteaddr")
     private String remoteAddr;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(updatable = false)
+    @Column(updatable = false,name="createdat")
     private Date createdAt;
 
     // JPA requirement
