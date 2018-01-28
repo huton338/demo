@@ -1,4 +1,4 @@
-package service;
+package demo.service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import data.entity.Message;
-import data.repository.MessageRepository;
+import demo.data.entity.Message;
+import demo.data.repository.MessageRepository;
 
 @Service
 public class MessageService {
