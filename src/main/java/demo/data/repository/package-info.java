@@ -5,4 +5,4 @@
  * @author remi_
  *
  */
-package data.entity;
+package demo.data.repository;

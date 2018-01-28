@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Hello, Spring Boot!</title>
+</head>
+<body>
+<h1>書籍登録・一覧画面</h1>
+
+<form action="#" th:action="@{/bookdetail}" th:object="${BookDetailForm}" method="post">
+    <p>タイトル: <input type="text" th:field="*{title}" />
+       <em th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title Error</em></p>
+    <p>著者: <input type="text" th:field="*{authors}" />
+       <em th:if="${#fields.hasErrors('authors')}" th:errors="*{authors}">title Error</em></p>
+    <p>出版社: <input type="text" th:field="*{publisher}" />
+       <em th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}">title Error</em></p>
+    <p>出版日: <input type="text" th:field="*{published_date}" />
+       <em th:if="${#fields.hasErrors('published_date')}" th:errors="*{published_date}">title Error</em></p>
+    <p><textarea cols="40" rows="4" placeholder="Type anything" th:field="*{text}"></textarea>
+       <em th:if="${#fields.hasErrors('text')}" th:errors="*{text}">Text Error</em></p>
+    <p><input type="submit" value="登録" /></p>
+</form>
+
+<h2>登録一覧</h2>
+
+<dl>
+    <th:block th:each="book : ${BookDetailList}">
+	    <table>
+	        <tr>
+	           <th>タイトル:</th>
+	           <td class="title" th:text="${book.title}"></td>
+	        </tr>
+	        <tr>
+	           <th>著者:</th>
+	           <td class="authors" th:text="${book.authors}"></td>
+	        </tr>
+	        <tr>
+		        <th>出版社:</th>
+		        <td class="publisher" th:text="${book.publisher}"></td>
+            </tr>
+            <tr>
+                <th>出版日:</th>
+                <td class="publisher" th:text="${book.publishedDate}"></td>
+            </tr>
+            <tr>
+                <th>登録日:</th>
+                <td th:text="${#dates.format(book.createdAt, '(yyyy-MM-dd HH:mm:ss)')}">(1970-01-01 00:00:00)</td>
+            </tr>
+            <tr>
+                <th>メモ:</th>
+                <td class="publisher" th:text="${book.text}"></td>
+            </tr>
+	    </table>
+    </th:block>
+</dl>
+
+</body>
+</html>

@@ -5,4 +5,4 @@
  * @author remi_
  *
  */
-package controller;
+package demo.data.entity;
