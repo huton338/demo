@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Hello, Spring Boot!</title>
+</head>
+<body>
+<h1>検索</h1>
+
+<form action="#" th:action="@{/bookresult}" th:object="${BookSearchForm}" method="post">
+    <p>タイトル: <input type="text" th:field="*{title}" />
+       <em th:if="${#fields.hasErrors('title')}" th:errors="*{title}">title Error</em></p>
+    <p>著者: <input type="text" th:field="*{authors}" />
+       <em th:if="${#fields.hasErrors('authors')}" th:errors="*{authors}">title Error</em></p>
+    <p><input type="submit" value="検索" /></p>
+</form>
+
+<h2>検索結果</h2>
+
+<dl>
+    <th:block th:each="booksearch : ${SearchList}" th:object="${booksearch}">
+	    <table>
+	        <tr>
+	           <th>タイトル:</th>
+	           <td class="title" th:text="*{title}"></td>
+	        </tr>
+	        <tr>
+	           <th>著者:</th>
+	           <td class="authors" th:text="*{authors}"></td>
+	        </tr>
+	        <tr>
+		        <th>出版社:</th>
+		        <td class="publisher" th:text="*{publisher}"></td>
+            </tr>
+            <tr>
+                <th>出版日:</th>
+                <td class="publisher" th:text="*{publishedDate}"></td>
+            </tr>
+	    </table>
+    </th:block>
+</dl>
+
+</body>
+</html>
